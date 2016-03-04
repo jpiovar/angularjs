@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="plunker">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularJS Plunker</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <body>
+    <div ng-controller="MainCtrl">Hello {{name}}! 
+		<a href="#" ng-click="met()">aaa</a>
+	</div>
+	
+    <p ng-controller="ParentCtrl">Hello {{parentv}}!
+      <a href="#" ng-click="methodP()">PP</a>
+    </p>
+    <p ng-controller="ChildCtrl">Hello {{childv}}!
+      <a href="#" ng-click="methodC()">CC</a>
+    </p>
+  </body>
+
+</html>
