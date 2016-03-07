@@ -16,7 +16,7 @@
     <div ng-controller="MainCtrl">Hello {{name}}! 
 		<a href="#" ng-click="met()">aaa</a>
 	
-	<table>
+	<table >
 		<thead>
 			<tr>
 				<td>ID</td>
@@ -26,8 +26,8 @@
 				<td>PRICE</td>
 			</tr>
 		</thead>
-		<tbody>
-			<tr ng-repeat="item in items">
+		<tbody ng-init="strInt()">
+			<tr ng-repeat="item in items | orderBy:'-age'">
 				<td>{{ item.id }}</td>
 				<td>{{ item.name }}</td>
 				<td>{{ item.age }}</td>

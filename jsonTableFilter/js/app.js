@@ -6,8 +6,21 @@ app.controller('MainCtrl',['$scope','$http', function($scope,$http) {
     console.log('ok');
   }
   
-  $http.get('data/items.json').success(function(data){debugger;
-    $scope.items = data;
-  });
+  
+	$http.get('data/items.json').success(function(data){
+      $scope.items = data;
+	  
+	  /* convert input age from string to integer "30" to 30 */
+	  angular.forEach($scope.items, function (item) {		
+		item.age = parseInt(item.age);
+	  });  
+	  
+	  
+    });
+  
+
+  
+  
+  
   
 }]);
