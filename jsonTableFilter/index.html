@@ -17,10 +17,34 @@
 		<a href="#" ng-click="met()">aaa</a>
 	
 	<table>
-		<tr ng-repeat="item in items">
-			<td>{{ item.id }}</td>
-			<td>{{ item.name }}</td>
-		</tr>
+		<thead>
+			<tr>
+				<td>ID</td>
+				<td>NAME</td>
+				<td>AGE</td>
+				<td>QUANTITY</td>
+				<td>PRICE</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in items">
+				<td>{{ item.id }}</td>
+				<td>{{ item.name }}</td>
+				<td>{{ item.age }}</td>
+				<td>{{ item.quantity }}</td>
+				<td>{{ item.price }}</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="2">1 - 5 of 11</td>
+				<td></td>
+				
+				<td colspan="2"></td>
+				
+				
+			</tr>
+		</tfoot>
 	</table>
 	
 	</div>
