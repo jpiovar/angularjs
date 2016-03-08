@@ -21,6 +21,15 @@ app.controller('MainCtrl',['$scope','$http', function($scope,$http) {
 	  });  
 	  
 	}
+	
+	$scope.clearFilter = function() {debugger;
+	  
+      console.log("clear filter");
+      if($scope.filterS == "") {
+		  $scope.filterS = undefined;
+	  }
+	  
+    };
   
 
   

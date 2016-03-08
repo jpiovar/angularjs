@@ -15,7 +15,16 @@
   <body>
     <div ng-controller="MainCtrl">Hello {{name}}! 
 		<a href="#" ng-click="met()">aaa</a>
-	
+		<br/>
+		<input ng-model="filterS" /> 
+		<select ng-model="filterS" ng-change="clearFilter()">
+			<option value=""></option>
+			<option value="john">john</option>
+			<option value="john1">john1</option>
+			<option value="john2">john2</option>
+			<option value="jake">jake</option>
+		</select>
+		<br/><a ng-click="clearFilter()">clear filter</a>
 	<table >
 		<thead>
 			<tr>
@@ -26,8 +35,8 @@
 				<td>PRICE</td>
 			</tr>
 		</thead>
-		<tbody ng-init="strInt()">
-			<tr ng-repeat="item in items | orderBy:'-age'">
+		<tbody>
+			<tr ng-repeat="item in items | filter:{name:filterS}:true | orderBy:'-age'">
 				<td>{{ item.id }}</td>
 				<td>{{ item.name }}</td>
 				<td>{{ item.age }}</td>
