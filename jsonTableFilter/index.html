@@ -36,7 +36,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="item in items | filter:{name:filterS}:true | limitTo:2:6 | orderBy:'-age'">
+			<tr ng-repeat="item in items | filter:{name:filterS}:true | limitTo:2:1 | orderBy:'-age'">
 				<td>{{ item.id }}</td>
 				<td>{{ item.name }}</td>
 				<td>{{ item.age }}</td>
