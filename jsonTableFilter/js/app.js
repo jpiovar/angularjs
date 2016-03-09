@@ -30,9 +30,32 @@ app.controller('MainCtrl',['$scope','$http', function($scope,$http) {
 	  }
 	  
     };
+	
+	$scope.classSet = function(clsName) {debugger;
+		if(clsName == 'price'){
+			$scope.clsNonPrice = false;
+		} else if (clsName == 'quantity'){
+			$scope.clsNonQuantity = false;
+		} else if (clsName == 'age'){
+			$scope.clsNonAge = false;
+		} else if (clsName == 'name'){
+			$scope.clsNonName = false;
+		} else if (clsName == 'id'){
+			$scope.clsNonId = false;
+		}
+		
+		
+		
+		$scope.clsSortorderPrice = true;
+		$scope.clsSortorderQuantity = true;
+		$scope.clsSortorderAge = true;
+		$scope.clsSortorderName = true;
+		$scope.clsSortorderId = true;
+	}
   
 	$scope.orderS = function(os) {debugger;
 	  
+	  //$scope.classSet();
       
 
 	  $scope.ordReverse = !$scope.ordReverse;

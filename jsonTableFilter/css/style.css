@@ -7,3 +7,6 @@ table, th, td {
 .sortorder.reverse:after {
   content: '\25bc';
 }
+.non:after {
+  content: '--';
+}

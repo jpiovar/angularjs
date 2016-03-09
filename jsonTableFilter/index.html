@@ -31,8 +31,8 @@
 				<td class="sortorder" ng-class="{reverse:ordReverse}"><a href="#" ng-click="orderS('id')">ID</a></td>
 				<td class="sortorder" ng-class="{reverse:ordReverse}"><a href="#" ng-click="orderS('name')">NAME</a></td>
 				<td class="sortorder" ng-class="{reverse:ordReverse}"><a href="#" ng-click="orderS('age')">AGE</a></td>
-				<td class="sortorder" ng-class="{reverse:ordReverse}"><a href="#" ng-click="orderS('quantity')">QUANTITY</a></td>
-				<td class="sortorder" ng-class="{reverse:ordReverse}"><a href="#" ng-click="orderS('price')">PRICE</a></td>
+				<td ng-init="clsSortorderQuantity = false; clsNonQuantity = true;" ng-class="[{non:clsNonQuantity},{reverse:ordReverse},{sortorder:clsSortorderQuantity}]"><a href="#" ng-click="orderS('quantity'); classSet('quantity');">QUANTITY</a></td>
+				<td ng-init="clsSortorderPrice = false; clsNonPrice = true;" ng-class="[{non:clsNonPrice},{reverse:ordReverse},{sortorder:clsSortorderPrice}]"><a href="#" ng-click="orderS('price'); classSet('price');">PRICE</a></td>
 			</tr>
 		</thead>
 		<tbody>
