@@ -31,7 +31,14 @@ app.controller('MainCtrl',['$scope','$http', function($scope,$http) {
 	  
     };
   
-
+	$scope.orderS = function(os) {debugger;
+	  
+      console.log("ordering" + os);
+      
+	  $scope.ordS = os;
+	  
+	  
+    };
   
   
   
