@@ -28,15 +28,15 @@
 	<table ng-init="ordReverse = false">
 		<thead>
 			<tr>
-				<td><a href="#" ng-click="orderS('id')">ID</a></td>
-				<td><a href="#" ng-click="orderS('name')">NAME</a></td>
-				<td><a href="#" ng-click="orderS('age')">AGE</a></td>
-				<td><a href="#" ng-click="orderS('quantity')">QUANTITY</a></td>
-				<td><a href="#" ng-click="orderS('price')">PRICE</a></td>
+				<td class="sortorder" ng-class="{reverse:ordReverse}"><a href="#" ng-click="orderS('id')">ID</a></td>
+				<td class="sortorder" ng-class="{reverse:ordReverse}"><a href="#" ng-click="orderS('name')">NAME</a></td>
+				<td class="sortorder" ng-class="{reverse:ordReverse}"><a href="#" ng-click="orderS('age')">AGE</a></td>
+				<td class="sortorder" ng-class="{reverse:ordReverse}"><a href="#" ng-click="orderS('quantity')">QUANTITY</a></td>
+				<td class="sortorder" ng-class="{reverse:ordReverse}"><a href="#" ng-click="orderS('price')">PRICE</a></td>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="item in items | filter:{name:filterS}:true | limitTo:10:0 | orderBy:ordS:ordReverse">
+			<tr ng-repeat="item in items | filter:{name:filterS}:true | limitTo:11:0 | orderBy:ordS:ordReverse">
 				<td>{{ item.id }}</td>
 				<td>{{ item.name }}</td>
 				<td>{{ item.age }}</td>
