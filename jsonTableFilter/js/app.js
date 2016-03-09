@@ -33,9 +33,28 @@ app.controller('MainCtrl',['$scope','$http', function($scope,$http) {
   
 	$scope.orderS = function(os) {debugger;
 	  
-      console.log("ordering" + os);
       
+
+	  $scope.ordReverse = !$scope.ordReverse;
+	  
+	  if(os != $scope.ordS){
+		  $scope.ordReverse = false;
+	  }
+      
+	  
+	  console.log("ordering" + os);
+	  
 	  $scope.ordS = os;
+	  
+
+	  
+	  /*
+	  if(os != $scope.ordS){
+		  $scope.ordReverse = false;
+	  } else{
+		$scope.ordReverse = true;
+	  }
+	  */
 	  
 	  
     };

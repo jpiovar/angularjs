@@ -25,18 +25,18 @@
 			<option value="jake">jake</option>
 		</select>
 		<br/><a ng-click="clearFilter()">clear filter</a>
-	<table >
+	<table ng-init="ordReverse = false">
 		<thead>
 			<tr>
 				<td><a href="#" ng-click="orderS('id')">ID</a></td>
 				<td><a href="#" ng-click="orderS('name')">NAME</a></td>
-				<td>AGE</td>
-				<td>QUANTITY</td>
-				<td>PRICE</td>
+				<td><a href="#" ng-click="orderS('age')">AGE</a></td>
+				<td><a href="#" ng-click="orderS('quantity')">QUANTITY</a></td>
+				<td><a href="#" ng-click="orderS('price')">PRICE</a></td>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="item in items | filter:{name:filterS}:true | limitTo:10:0 | orderBy:ordS">
+			<tr ng-repeat="item in items | filter:{name:filterS}:true | limitTo:10:0 | orderBy:ordS:ordReverse">
 				<td>{{ item.id }}</td>
 				<td>{{ item.name }}</td>
 				<td>{{ item.age }}</td>
