@@ -27,7 +27,9 @@ app.controller('MainCtrl',['$scope','$http', function($scope,$http) {
 		var method = 'POST';
 		var url = 'post.php';
 		$scope.codeStatus = '';
+		$scope.dataPost = '';
 		
+		/*
 		$http({
 			method: method,
 			url: url,
@@ -39,6 +41,15 @@ app.controller('MainCtrl',['$scope','$http', function($scope,$http) {
 		})
 		.error(function (response){debugger;
 			$scope.codeStatus = response.status || 'chyba';
+		});
+		*/
+		$http.post("post.php",formData1)
+		.success(function(data, status){debugger;
+			$scope.codeStatus = status;
+			$scope.dataPost = data;
+		})
+		.error(function (data, status){debugger;
+			$scope.codeStatus = status.status || 'chyba';
 		});
 	}
 	
