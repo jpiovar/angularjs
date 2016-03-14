@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="getpost">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularJS json get post</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	
+	
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	
+	<!-- font awesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	
+	<!-- angular 1.5 -->
+    <script src="js/angular.js"></script>
+    <script src="js/app.js"></script>
+	
+  </head>
+
+  <body>
+    <div ng-controller="MainCtrl"> 
+		Id: <input ng-model="id" value="" name="id" /> 
+		Name: <input ng-model="name" value="" name="name" /> 
+		Age: <input ng-model="age" value="" name="name" /> 
+		Quantity: <input ng-model="quantity" value="" name="quantity" /> 
+		Price: <input ng-model="price" value="" name="price" /><br/>
+		
+		<br/><a ng-click="addRow()">add to table</a><br/>
+		
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<td>ID</td>
+				<td>NAME</td>
+				<td>AGE</td>
+				<td>QUANTITY</td>
+				<td>PRICE</td>
+			</tr>
+		</thead>
+		<tbody ng-init="getData()">
+			<tr ng-repeat="item in itemsData">
+				<td>{{ item.id }}</td>
+				<td>{{ item.name }}</td>
+				<td>{{ item.age }}</td>
+				<td>{{ item.quantity }}</td>
+				<td>{{ item.price }}</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="2">1 - 5 of 11</td>
+				<td></td>
+				
+				<td colspan="2"></td>
+				
+				
+			</tr>
+		</tfoot>
+	</table>
+	
+	</div>
+  </body>
+
+</html>

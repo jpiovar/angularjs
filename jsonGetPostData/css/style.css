@@ -1,0 +1,12 @@
+table, th, td {
+   border: 1px solid black;
+}
+.sortorder:after {
+  content: '\25b2';
+}
+.sortorder.reverse:after {
+  content: '\25bc';
+}
+.non:after {
+  content: '--';
+}
