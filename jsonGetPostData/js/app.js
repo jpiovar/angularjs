@@ -24,14 +24,20 @@ app.controller('MainCtrl',['$scope','$http','$templateCache', function($scope,$h
 	}
 	
 	$scope.postMethod = function(formData1){debugger;
-		var method = 'POST';
+		$scope.method = 'POST';
 		$scope.url = 'post.php';
 		$scope.code = null;
 		$scope.response = null;
 		$scope.dataPost = '';
 		
-		
-		$http({method: $scope.method, url: $scope.url, cache: $templateCache}).
+		/* aj toto ok
+		$http({
+			method: $scope.method, 
+			url: $scope.url,
+			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+			data: JSON.stringify(formData1),
+			cache: $templateCache
+			}).
         then(function(response) {debugger;
           $scope.status = response.status;
           $scope.data = response.data;
@@ -39,10 +45,10 @@ app.controller('MainCtrl',['$scope','$http','$templateCache', function($scope,$h
           $scope.data = response.data || "Request failed";
           $scope.status = response.status;
 		});
+		*/
 		
 		
-		/*
-		$http.post("post.php",formData1)
+	$http.post("post.php",JSON.stringify(formData1))
 		.success(function(data, status){debugger;
 			$scope.codeStatus = status;
 			$scope.dataPost = data;
@@ -50,7 +56,7 @@ app.controller('MainCtrl',['$scope','$http','$templateCache', function($scope,$h
 		.error(function (data, status){debugger;
 			$scope.codeStatus = status.status || 'chyba';
 		});
-		*/
+		
 	}
 	
 	
