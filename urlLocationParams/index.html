@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="locator">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularJS url location params</title>
+    <script src="angular.js"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <body>
+    <div ng-controller="MainCtrl">
+	
+		{{ ok }}<br/>
+		{{name}}<br/>
+		{{url}}<br/>
+		{{path}}<br/>
+		{{params}}<br/>
+		{{hashe}}
+	
+	<!-- 
+	
+	http://github.localhost/angular/urlLocationParams/#/pop?firstname=fname&lastname=lname
+	
+	github.localhost
+	/pop
+	{"firstname":"fname","lastname":"lname"}
+
+	-->
+	
+	</div>
+  </body>
+
+</html>
