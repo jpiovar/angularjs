@@ -10,7 +10,13 @@ app.controller('MainCtrl',['$scope','$http','$location', function($scope,$http,$
     $scope.params = $location.search();
 	$scope.hashe = $location.hash();
 	
-	console.log($scope.params);
-	console.log($scope.hashe);
+	
+	$(document).ready(function(){		
+		var url = $.url();		
+		$scope.angurl = url.param();
+		console.log($scope.angurl);
+		$scope.$apply();
+    });
+	
   
 }]);

@@ -3,9 +3,11 @@
 
   <head>
     <meta charset="utf-8" />
-    <title>AngularJS url location params</title>
+    <title>AngularJS url location params with jquery</title>
     <script src="angular.js"></script>
     <script src="app.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-url-parser/2.3.1/purl.min.js"></script>
   </head>
 
   <body>
@@ -17,16 +19,26 @@
 		{{path}}<br/>
 		{{params}}<br/>
 		{{hashe}}
+		
 	
-	<!-- 
 	
-	http://github.localhost/angular/urlLocationParams/#/pop?firstname=fname&lastname=lname
 	
-	github.localhost
-	/pop
-	{"firstname":"fname","lastname":"lname"}
+	<br/>
+	<br/>purl jquery part<br/>
+	
+	<script>	
+		var url = $.url();
+		console.log(url.param());
+		document.write(JSON.stringify(url.param()));
+	</script>
 
-	-->
+
+	<br/>
+	<br/>purl jquery set angular<br/>
+	{{ angurl }}
+
+
+	
 	
 	</div>
   </body>
