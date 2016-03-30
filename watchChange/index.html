@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="changer">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularJS ng change list</title>
+    <script src="angular.js"></script>
+    <script src="app.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/watch/2.0.3/jquery.watch.min.js" ></script>
+  </head>
+
+  <body>
+    <div ng-controller="MainCtrl">
+	
+		<ol class="olItem">
+			<li id="item1"> item 1 </li>
+			<li id="item2" class="classb"> item 2 </li>
+		</ol>
+	
+	</div>
+  </body>
+  
+  <script>
+	$('.olItem').click(function(){		
+		alert('clicked ol li element ');
+		$("#item1").addClass("classa pop");
+		$("#item2").removeClass("classb");		
+	});
+	
+	$("#item1").watch('class',function(){
+		alert('watcher after changed class added item1');
+	});
+  </script>
+
+</html>
