@@ -9,6 +9,14 @@ angular.module('docsSimpleDirective', [])
 
 .directive('myCustomer', function() {
   return {
+	  
+	link: function(scope, element, attributes){
+
+      console.log(attributes.myCustomer);
+      console.log(attributes.anotherParam);
+
+    },
+	
     template: 'Name: {{customer.name}} Address: {{customer.address}}'
   };
 });
