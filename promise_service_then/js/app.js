@@ -28,12 +28,24 @@ app.controller('MainCtrl', function($scope,$http,servise1) { debugger;
     .then(function(data){ debugger;
       console.log('ok service done');
       console.log(data);
+    }).then(function(){
+      return true;
+    }).then(function(){
+      $scope.ok1();
+    }).then(function(){
+      $scope.ok2();
     });
 
   }
 
+  $scope.ok1 = function(){
+    console.log('ok1');
+  }
 
 
+  $scope.ok2 = function(){
+    console.log('ok2');
+  }
   
 
 });
