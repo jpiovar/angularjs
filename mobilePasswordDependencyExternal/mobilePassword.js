@@ -1,13 +1,13 @@
 angular.module('mobilePassword', [])
-.directive('password', ['$timeout', function($timeout) { debugger;
-  function link(scope, element, attrs) {debugger;
+.directive('password', ['$timeout', function($timeout) { 
+  function link(scope, element, attrs) {
     var lastSize = 0;
     var timer;
     var timeout = 200;
     scope[attrs.password] = '';
 	
 	
-	scope.$watch(attrs.ngModel, function(value) {debugger;
+	scope.$watch(attrs.ngModel, function(value) {
 	
 
 	

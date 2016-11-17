@@ -1,18 +1,17 @@
 angular.module('mobilePasswordModule', ['mobilePassword'])
 .controller('mainCtrl', function($scope,$compile) {
-	debugger;
 	
-	$scope.changePwdInput = function(a,b){ debugger;
+	
+	$scope.changePwdInput = function(a,b){ 
 		$scope[a];
 		$scope[a+'P'];
 		
 		$scope.changeModel = a;
-		$scope.changeOperation = b;
-		
+		$scope.changeOperation = b;		
 		
 	}
 	
-    $scope.showHidePwdInput = function(a,b){ debugger;
+    $scope.showHidePwdInput = function(a,b){ 
 		
 		$scope[a];
 		$scope[a+'P'];
@@ -25,17 +24,15 @@ angular.module('mobilePasswordModule', ['mobilePassword'])
 		
 		if(b=='show'){
 			
-			if($scope[a+'Temp'].changed=='' || $scope[a+'Temp'].changed=='hide'){ debugger;
+			if($scope[a+'Temp'].changed=='' || $scope[a+'Temp'].changed=='hide'){ 
 				$scope[a+'Temp'].changed='show';
 				
 				$scope[a+'Temp'].value1 = $scope[a+'P'];
-				//$scope[a+'Temp'].value2 = $scope[a];
-				
 				$scope[a]=$scope[a+'P'];			
 			}
 			
 			if($scope[a].charCodeAt(0)==8226){
-				debugger;
+				
 				$scope[a]=$scope[a+'P'];
 				$scope[a+'Temp'].value1 = $scope[a+'P'];
 			}
@@ -44,7 +41,7 @@ angular.module('mobilePasswordModule', ['mobilePassword'])
 				
 		if(b=='hide'){
 			
-			if($scope[a+'Temp'].changed=='' || $scope[a+'Temp'].changed=='show'){ debugger;
+			if($scope[a+'Temp'].changed=='' || $scope[a+'Temp'].changed=='show'){ 
 				$scope[a+'Temp'].changed='hide';
 				
 				var bullets="";
@@ -56,9 +53,7 @@ angular.module('mobilePasswordModule', ['mobilePassword'])
 											
 			}
 			
-		}
-		
-		
+		}	
 		
 
 	}
