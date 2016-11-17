@@ -24,23 +24,20 @@ angular.module('mobilePassword', [])
 		  }
 		  
 		  
-		  //var bullets = value;
-		  
-		  //if( scope[scope.changeModel+"Temp"]==undefined || (scope[scope.changeModel+"Temp"] && scope[scope.changeModel+"Temp"]['changed']!='show') ){
+		  var bullets="";
 			  
-			  var bullets="";
-			  
-			  for (var i = 0; i < value.length; ++i) {
-				bullets += String.fromCharCode(8226);
-			  }
-		  //}
-		  
+		  for (var i = 0; i < value.length; ++i) {
+			bullets += String.fromCharCode(8226);
+		  }
+	  
 		  lastSize = value.length;
 		  if (! (timer === undefined )) {
 			$timeout.cancel(timer);
 		  }
 		  timer = $timeout(function(){
-			 scope[attrs.ngModel] = bullets;
+			 if( scope[scope.changeModel+"Temp"]==undefined || (scope[scope.changeModel+"Temp"] && scope[scope.changeModel+"Temp"]['changed']!='show') ){
+				scope[attrs.ngModel] = bullets; 
+			 }			 
 		   }, timeout);
 
 	   
