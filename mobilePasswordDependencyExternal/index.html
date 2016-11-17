@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="mobilePasswordModule">
 <head>
+  
   <script src="angular.js"></script>
   <script src="mobilePassword.js"></script>
   <script src="app.js"></script>
+  <script src="jquery.min.js"></script>
+  
 </head>
 <body ng-controller="mainCtrl">
   <label>Password</label>
-  <input ng-model="pwd" password="pwdP" type="text" id="pwd" name="pwd" />
+  <input ng-model="pwd" password="pwdP" type="text"  id="pwd" name="pwd" ng-change="changePwdInput('pwd','change')"/>
 
   <pre ng-cloak>
     {{pwd}} {{ pwdP }}
