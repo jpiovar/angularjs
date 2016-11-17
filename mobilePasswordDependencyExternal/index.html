@@ -1,19 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="mobilePasswordModule">
 <head>
-
-</head>
-<body>
-  <label>Password</label>
-  <input ng-model="pwd" password="password" type="text" id="password" name="password" />
-
-  <pre>
-    {{ password }}
-  </pre>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+  <script src="angular.js"></script>
   <script src="mobilePassword.js"></script>
   <script src="app.js"></script>
+</head>
+<body ng-controller="mainCtrl">
+  <label>Password</label>
+  <input ng-model="pwd" password="pwdP" type="text" id="pwd" name="pwd" />
+
+  <pre ng-cloak>
+    {{pwd}} {{ pwdP }}
+  </pre>
+  
+  
+  <p>
+  <span ng-click="change=false; showHidePwdInput('pwd','show')">show password</span> / <span ng-click="changed=false; showHidePwdInput('pwd','hide')">hide  password</span>
+  </p>
+  
+
+  
+
+  
+  <input ng-model="pwd1" password="pwd1P" type="text" id="pwd1" name="pwd1" />
+
+  <pre ng-cloak>
+    {{pwd1}} {{ pwd1P }}
+  </pre>
+  
+  
+  <p>
+  <span ng-click="showHidePwdInput('pwd1','show')">show password</span> / <span ng-click="showHidePwdInput('pwd1','hide')">hide  password</span>
+  </p>
+
+  
+  
+  
+
 
 </body>
 </html>
