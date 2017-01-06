@@ -21,8 +21,9 @@ angular.module('simpleDirective', [])
 	  elem.on('click',function(){
 		  elem.css({'color':'red'});
 		  scope.$apply(function() {
-			  scope.color='red';
+			  scope.color='red';			  
 		  });
+
 	  });
 
     },

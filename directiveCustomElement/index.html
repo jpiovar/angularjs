@@ -6,6 +6,8 @@
   </head>
   <body ng-controller="Controller">  
 	
+	{{color}}<br><br>
+	
 	<div ng-init="customData=[{'name':'janko','age':'22'},{'name':'eva','age':'23'},{'name':'marienka','age':'24'}]; color='blue';">
 		<div ng-repeat="cd in customData" my-customer-directive my-customer={{cd.name}} another-param={{cd.age}} {{color}}></div>
 	</div>
