@@ -7,7 +7,7 @@ angular.module('simpleDirective', [])
   };
 }])
 
-.directive('myCustomer', function() {debugger;
+.directive('myCustomerDirective', function() {debugger;
 	
 	
 
@@ -19,7 +19,7 @@ angular.module('simpleDirective', [])
       console.log(attributes.anotherParam);
 
     },
-	
+	replace: false,
 	restrict: 'AEC',
     template: function(elem, attr){debugger;
 		return 'Name: {{customer.name}} Address: {{customer.address}} and '+attr.myCustomer+' and '+attr.anotherParam;
