@@ -13,16 +13,23 @@ angular.module('simpleDirective', [])
 
   return {	  
 	  
-	link: function(scope, element, attributes){
+	link: function(scope, elem, attrs){
 
-      console.log(attributes.myCustomer);
-      console.log(attributes.anotherParam);
+      console.log(attrs.myCustomer);
+      console.log(attrs.anotherParam);
+	  
+	  elem.on('click',function(){
+		  elem.css({'color':'red'});
+		  scope.$apply(function() {
+			  scope.color='red';
+		  });
+	  });
 
     },
 	replace: false,
 	restrict: 'AEC',
-    template: function(elem, attr){debugger;
-		return 'Name: {{customer.name}} Address: {{customer.address}} and '+attr.myCustomer+' and '+attr.anotherParam;
+    template: function(elem, attrs){debugger;
+		return 'color {{color}}  Name: {{customer.name}} Address: {{customer.address}} and '+attrs.myCustomer+' and '+attrs.anotherParam;
 	}
   };
 });
