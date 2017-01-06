@@ -1,12 +1,13 @@
 <!doctype html>
-<html ng-app="docsSimpleDirective">
+<html ng-app="simpleDirective">
   <head>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>    
     <script src="script.js"></script>    
   </head>
   <body ng-controller="Controller">  
-
-	<div my-customer="11" another-param="22"></div>
 	
+	<div ng-init="customData=[{'name':'janko','age':'22'},{'name':'eva','age':'23'},{'name':'marienka','age':'24'}]">
+		<div ng-repeat="cd in customData" my-customer={{cd.name}} another-param={{cd.age}}></div>
+	</div>
   </body>
 </html>

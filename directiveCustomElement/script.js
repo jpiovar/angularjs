@@ -1,4 +1,4 @@
-angular.module('docsSimpleDirective', [])
+angular.module('simpleDirective', [])
 
 .controller('Controller', ['$scope', function($scope) {
   $scope.customer = {
