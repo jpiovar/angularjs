@@ -1,32 +1,54 @@
 angular.module('simpleDirective', [])
 
-.controller('Controller', ['$scope', function($scope) {
+.controller('Controller', ['$scope','$timeout', function($scope,$timeout) {
   $scope.customer = {
     name: 'Naomi',
     address: '1600 Amphitheatre'
   };
+  
+  $scope.ok = function(){
+	  $scope.color1;
+	  debugger;
+  }
 }])
 
-.directive('myCustomerDirective', function() {debugger;
+.directive('myCustomerDirective', function($timeout) {debugger;
 	
 	
 
   return {	  
-	  
-	link: function(scope, elem, attrs){
+	scope: false,
+	transclude: true,
+	/*scope: {
+                    color1: '=',
+					color: '='
+    },*/
+	
+	link: function(scope, elem, attrs){ debugger;
 
       console.log(attrs.myCustomer);
       console.log(attrs.anotherParam);
 	  
-	  elem.on('click',function(){
+	  elem.on('click',function(){ debugger;
 		  elem.css({'color':'red'});
+		  
+		  scope.color1='red';
 		  scope.$apply(function() {
-			  scope.color='red';			  
+			  scope.color='red';
+			  //scope.color1='red';
+			  				  
 		  });
+		  
+		  $timeout(function () {
+                        scope.color1 = 'Bye bye!'
+                    }, 200);
+		  
+
 
 	  });
 
     },
+	
 	replace: false,
 	restrict: 'AEC',
     template: function(elem, attrs){debugger;
