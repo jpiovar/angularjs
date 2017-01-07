@@ -17,42 +17,40 @@ angular.module('simpleDirective', [])
 	
 
   return {	  
-	scope: false,
-	transclude: true,
-	/*scope: {
-                    color1: '=',
-					color: '='
-    },*/
+	scope: { color1: '=', name1: '@', age: '@age1' },
+	//scope: { color1: '=color1', name1: '@', age: '@age1' },
+	//transclude: true,
 	
-	link: function(scope, elem, attrs){ debugger;
-
-      console.log(attrs.myCustomer);
-      console.log(attrs.anotherParam);
+	
+	replace: false,
+	restrict: 'AEC',
+    template: function(elem, attr){debugger;
+		return 'color1 {{color1}}  Name: {{name1}} Age: {{age}} ||   '+attr.color1+' and '+attr.name1+' and '+attr.age;
+	},
+	
+	link: function(scope, elem, attr){ debugger;
+	  console.log(attr.color1);
+      console.log(attr.name1);
+      console.log(attr.age1);
 	  
 	  elem.on('click',function(){ debugger;
-		  elem.css({'color':'red'});
+		  elem.css({'color':scope.color1});
 		  
-		  scope.color1='red';
+		  scope.color1='red11';
 		  scope.$apply(function() {
-			  scope.color='red';
-			  //scope.color1='red';
+			  scope.color1="blue";
+			  
 			  				  
 		  });
 		  
-		  $timeout(function () {
-                        scope.color1 = 'Bye bye!'
-                    }, 200);
+		  
 		  
 
 
 	  });
 
-    },
+    }
 	
-	replace: false,
-	restrict: 'AEC',
-    template: function(elem, attrs){debugger;
-		return 'color {{color}}  Name: {{customer.name}} Address: {{customer.address}} and '+attrs.myCustomer+' and '+attrs.anotherParam;
-	}
+	
   };
 });
