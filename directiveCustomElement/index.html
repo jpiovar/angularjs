@@ -7,7 +7,7 @@
   <body ng-controller="Controller">  
 	<input type="text" ng-model="color1" placeholder="Enter a color" />
 	{{color1}}<br><br>
-	
+	<span ng-init="janko='janicek'">{{janko}} </span>
 	<div ng-init="customData=[{'name':'janko','age':'22'},{'name':'eva','age':'23'},{'name':'marienka','age':'24'}]; color='blue'; color1='white';">
 		<div  my-customer-directive name1={{customData[0].name}} age1={{customData[0].age}} color1="color1"></div>
 	</div>

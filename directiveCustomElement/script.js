@@ -17,7 +17,7 @@ angular.module('simpleDirective', [])
 	
 
   return {	  
-	scope: { color1: '=', name1: '@', age: '@age1' },
+	scope: false, //{ color1: '=', name1: '@', age: '@age1' },
 	//scope: { color1: '=color1', name1: '@', age: '@age1' },
 	//transclude: true,
 	
@@ -34,6 +34,9 @@ angular.module('simpleDirective', [])
       console.log(attr.age1);
 	  
 	  elem.on('click',function(){ debugger;
+		 
+		  scope.janko;
+		
 		  elem.css({'color':scope.color1});
 		  
 		  scope.color1='red11';
@@ -45,9 +48,13 @@ angular.module('simpleDirective', [])
 		  
 		  
 		  
-
+		scope.$apply(function(){ debugger;
+           scope.janko = '2';
+		});
 
 	  });
+	  
+
 
     }
 	
