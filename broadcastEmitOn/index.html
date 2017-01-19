@@ -1,4 +1,4 @@
-<!doctype html>
+
 <html>
   <head>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>    
@@ -10,15 +10,19 @@
 	
 		<div ng-controller="middleCtrl">
 		
-		<button ng-click="middleBroadcast()" > Broadcast </button> 
-		<button ng-click="middleEmit()" /> Emit </button>
+		<button ng-click="middleBroadcast()" > Broadcast to child </button> 
+		<button ng-click="middleEmit()" /> Emit to parent </button>
+		<button ng-click="siblingBroadcast()" > Broadcast to sibling and to all levels and top and lower </button> 
 		
 			<div ng-controller="lowerCtrl">
 			
-				
-			
 			</div>
 		
+		</div>
+		
+		
+		<div ng-controller="siblingCtrl">				
+			
 		</div>
 	
 	</div> 
