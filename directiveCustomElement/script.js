@@ -49,7 +49,7 @@ angular.module('simpleDirective', [])
 		  
 		  
 		scope.$apply(function(){ debugger;
-           scope.janko = '2';
+           scope.janko = scope.color1;
 		});
 
 	  });

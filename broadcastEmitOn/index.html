@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>    
+    <script src="app.js"></script>    
+  </head>
+  <body ng-app="appMain">  
+	
+	<div ng-controller="topCtrl">
+	
+		<div ng-controller="middleCtrl">
+		
+		<button ng-click="middleBroadcast()" > Broadcast </button> 
+		<button ng-click="middleEmit()" /> Emit </button>
+		
+			<div ng-controller="lowerCtrl">
+			
+				
+			
+			</div>
+		
+		</div>
+	
+	</div> 
+	
+	
+  </body>
+</html>
