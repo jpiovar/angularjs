@@ -24,6 +24,10 @@ app.controller('middleCtrl', ['$scope','$rootScope', function($scope,$rootScope)
 		$rootScope.$broadcast('event1',{message:'broadcast event1 from middleCtrl'});
 	}
 	
+	$scope.siblingOnlyBroadcast = function(){
+		$scope.$parent.$broadcast('event1',{message:'broadcast event1 from middleCtrl'});
+	}
+	
 }]);
 
 
@@ -39,7 +43,11 @@ app.controller('lowerCtrl', ['$scope','$rootScope', function($scope,$rootScope) 
 app.controller('siblingCtrl', ['$scope','$rootScope', function($scope,$rootScope) {
 
 	$rootScope.$on('event1', function(evt, args){
-		console.log(args.message + ' in siblingCtrl');
+		console.log(args.message + ' in siblingCtrl via rootScope');
+	});
+	
+	$scope.$on('event1', function(evt, args){
+		console.log(args.message + ' in siblingCtrl via scope');
 	});
 
 }]);

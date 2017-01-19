@@ -12,7 +12,8 @@
 		
 		<button ng-click="middleBroadcast()" > Broadcast to child </button> 
 		<button ng-click="middleEmit()" /> Emit to parent </button>
-		<button ng-click="siblingBroadcast()" > Broadcast to sibling and to all levels and top and lower </button> 
+		<button ng-click="siblingBroadcast()" > Broadcast to sibling and to all levels and top and lower rootScope</button> 
+		<button ng-click="siblingOnlyBroadcast()" > Broadcast to sibling only scope and top and lower scope</button> 
 		
 			<div ng-controller="lowerCtrl">
 			
