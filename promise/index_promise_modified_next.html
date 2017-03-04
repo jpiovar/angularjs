@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+Name: <input ng-model="name"> {{name}}
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.name = "John Doe";
+	
+	var a = true;
+	
+	
+	function timeout(delay) {
+		return new Promise(function(resolve, reject){
+			setTimeout(function(){ 			
+				resolve('ok hrasko!');
+			}, delay);
+		});
+	}
+	
+	
+	var promise = new Promise(function(resolve, reject) {
+	
+		setTimeout(function(){ 
+			
+			resolve('Success!');
+		}, 3000);
+	  
+	});
+
+	promise.then(function(data){
+	  console.log(data);
+	})
+	.then(function(){
+		console.log('janko');
+	})
+	.then(function(){
+		
+		return timeout(3000).then(function(jj){ 
+			console.log(jj);
+		});
+		
+	})
+	.then(function(){
+		console.log('marienka');
+	});
+
+});
+</script>
+
+<p>Use the ng-model directive to bind the value of the input field to a property made in the controller.</p>
+
+</body>
+</html>
