@@ -15,7 +15,11 @@ app.controller('myCtrl', function($scope) {
 	var a = true;
 	
 	
-	
+	function timeout(delay) {
+		return new Promise(function(resolve, reject){
+			setTimeout(resolve, delay);
+		});
+	}
 	
 	
 	var promise = new Promise((resolve, reject) => {
@@ -34,9 +38,11 @@ app.controller('myCtrl', function($scope) {
 		console.log('janko');
 	})
 	.then(function(){
-		setTimeout(function(){ 
+		
+		return timeout(3000).then(function(){ 
 			console.log('hrasko');
-		}, 3000);
+		});
+		
 	})
 	.then(function(){
 		console.log('marienka');
