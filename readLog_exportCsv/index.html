@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="app.js"></script>
+
+
+<body ng-app="myapp">
+  <div ng-controller="MainCtrl" class="container">
+  <h1>Select text file</h1>
+    <input type="file" on-read-file="showContent($fileContent)" />
+    <input type="text" name="searchString" placeholder="search string" id="searchString" ng-model="searchString">
+    <button type="button" ng-click="readString(content)">Read String</button>
+    <div ng-show="content">
+        <h2>File content is:</h2>
+        <pre>{{ content }}</pre>
+    </div>
+  </div>
+</body>
+
+
+
+</html>
