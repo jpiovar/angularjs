@@ -11,6 +11,11 @@
     height: inherit;
 }
 
+.progress-wrapper svg {
+    position: absolute;
+    top: -999px;
+    left: -999px;
+}
 
 .progress-wrapper .text {
     position: absolute;
