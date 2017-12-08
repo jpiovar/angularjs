@@ -1,0 +1,32 @@
+.progressBarCircle {
+    display: inline-block;
+}
+
+
+
+.progress-wrapper {
+    display: inline-block;
+    position: relative;
+    min-height: 100px;
+    height: inherit;
+}
+
+
+.progress-wrapper .text {
+    position: absolute;
+    width: 100%;
+    right: 0%;
+    top: 40%;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.progress-wrapper .text span:nth-child(1) {
+    font-size: 1.5em;
+    padding-right: 0.2em;
+} 
+
+.progress-wrapper .text span:nth-child(2) {
+    font-size: 1.3em;
+} 

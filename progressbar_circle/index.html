@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <title>Angular-nvD3 Line Chart</title>
 
+    <link rel="stylesheet" href="style.css" />
+
     <script>document.write('<base href="' + document.location + '" />');</script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-svg-round-progressbar/0.4.8/roundProgress.min.js"></script> 
@@ -14,20 +16,27 @@
 
   <body ng-controller="MainCtrl">
     
-    <round-progress
-    max=maxValue
-    current=currentValue
-    color="url(#yourGradientIdHere)"
-    bgcolor="#eaeaea"
-    radius="100"
-    stroke="10"
-    semi="false"
-    rounded="true"
-    clockwise="true"
-    responsive="false"
-    duration="800"
-    animation="easeInOutQuart"
-    animation-delay="0"></round-progress>
+    <div class="progress-wrapper">
+      <round-progress class="progressBarCircle"
+      max=maxValue
+      current=currentValue
+      color="url(#yourGradientIdHere)"
+      bgcolor="#eaeaea"
+      radius="100"
+      stroke="10"
+      semi="false"
+      rounded="true"
+      clockwise="true"
+      responsive="false"
+      duration="800"
+      animation="easeInOutQuart"
+      animation-delay="0"></round-progress>
+
+
+      <span class="text"><span>{{currentValue}}</span> / <span>{{maxValue}}</span></span>
+
+    </div>
+
     
     <svg>
         <linearGradient id="yourGradientIdHere" x1="0" x2="0" y1="0" y2="1">
