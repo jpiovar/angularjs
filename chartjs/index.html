@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="plunker">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Chart js</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/chart.js/dist/Chart.min.js"></script>
+    <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <body ng-controller="MainCtrl">
+    
+    <div>
+      
+
+      
+
+
+      <canvas id="bar" class="chart chart-bar"
+        chart-data="data" chart-labels="labels"> chart-series="series"
+      </canvas>
+     
+
+    </div>
+
+    
+    
+    
+    <div>
+      <a href="" ng-click="setValues()">set values</a>
+    </div>
+
+  </body>
+
+</html>
