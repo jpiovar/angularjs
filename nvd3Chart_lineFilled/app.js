@@ -2,31 +2,47 @@ var app = angular.module('nvd3', []);
 
 app.controller('MainCtrl', function($scope) { 
 
+    $(document).ready(function(){
+      $(window).resize(detectSizeApply);
+    });
+
+
+    function detectSizeApply(){ 
+      cChWidth = parseInt(containerChart.style("width"));
+      cChHeight = parseInt(containerChart.style("height"));
+
+      svg.attr('height', '100%').attr('width','100%')
+        .attr('viewBox','0 0 '+Math.max(cChWidth,cChHeight) +' '+Math.max(cChWidth,cChHeight));
+  
+      // svg.select('text.title').remove();
+      svgWidth = parseInt(svg.style("width")); // 500px to 500
+      chartTitle.attr("x", svgWidth/2 + 30);
+    }
 
     
     $scope.title = "Chart title";
     
     var chartData;
     var chart;
-
-    var body = d3.select("body");
-    console.log(body);
-    var svg = body.select("svg");
-    console.log(svg);
+    var body = d3.select("body");    
+    var svg = body.select("#chart svg");    
     var svgWidth = parseInt(svg.style("width")); // 500px to 500
-    console.log(svgWidth);
+    
+    var containerChart = d3.select('#chart');
+    var cChWidth = parseInt(containerChart.style("width"));
+    var cChHeight = parseInt(containerChart.style("height"));
 
-
-    d3.select('#chart svg')
-    .append("text")
+    svg
+    .append("text").classed('title',true)
     .attr("x", svgWidth/2 + 30)             
     .attr("y", 30)
     .attr("text-anchor", "middle")  
     .text($scope.title);
 
-    // d3.select('.nv-legendWrap').attr('transform', 'translate(0, 475)')
-    
-    d3.selectAll('.nvd3.nv-legend g').style('fill', "white")
+    var chartTitle = svg.select('text.title');
+ 
+
+    detectSizeApply();
 
     nv.addGraph(function() {
         chart = nv.models.lineChart()
@@ -141,20 +157,18 @@ app.controller('MainCtrl', function($scope) {
     }
 
 
-
-
-
-   
-
-    
-
+  
     $scope.updateData = function(){ 
-        
-        var myData1 = sinAndCos1();   //You need data...
-        
-        chartData.datum(myData1).call(chart);
 
-        nv.utils.windowResize(chart.update);
+      $scope.title = "ok title";
+
+      chartTitle.text($scope.title);
+        
+      var myData1 = sinAndCos1();   //You need data...
+        
+      chartData.datum(myData1).call(chart);
+
+      nv.utils.windowResize(chart.update);
 
     }
 
