@@ -25,7 +25,17 @@ app.controller('MainCtrl', function($scope) {
     
     var body = d3.select("body");
 
-    var chObj = {      
+    var chObj = { 
+      'chart1':{
+        'chartData':null,
+        'chart':null,
+        'svg':body.select("#chart1 svg"),
+        'svgWidth':parseInt(body.select("#chart1 svg").style("width")),
+        'containerChart':d3.select('#chart1'),
+        'chartWidth':null,
+        'chartHeight':null,
+        'chartTitle':null
+      },            
       'chart2':{
         'chartData':null,
         'chart':null,
@@ -103,12 +113,10 @@ app.controller('MainCtrl', function($scope) {
 
 
     
-
-    initialLineChart('chart2');
-
+    initialLineChart('chart1');
+    initialLineChart('chart2');    
     
-    
-        
+    detectSizeApply('chart1');  
     detectSizeApply('chart2');
 
 
@@ -187,17 +195,17 @@ app.controller('MainCtrl', function($scope) {
 
 
   
-    $scope.updateDataLine = function(){ 
+    $scope.updateDataLine = function(aChart){ 
 
       $scope.title = "ok title";
 
-      chObj['chart2'].chartTitle.text($scope.title);
+      chObj[aChart].chartTitle.text($scope.title);
         
       var myData2 = sinAndCos1();   //You need data...
         
-      chObj['chart2'].chartData.datum(myData2).call(chObj['chart2'].chart);
+      chObj[aChart].chartData.datum(myData2).call(chObj[aChart].chart);
 
-      nv.utils.windowResize(function(){ chObj['chart2'].chart.update(); });
+      nv.utils.windowResize(function(){ chObj[aChart].chart.update(); });
 
     }
 

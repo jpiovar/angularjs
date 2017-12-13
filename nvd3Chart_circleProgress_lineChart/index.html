@@ -52,18 +52,25 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-6 text-center">
+            <div class="col-md-4 text-center">
                 <div class="chartArc">                    
                 </div>
                 <br>
                 <a href="" ng-click="updateDataArc()"> updateDataArc </a>
             </div>
-            <div class="col-md-6 text-center">
+            <div class="col-md-4 text-center">
+                <div id="chart1">
+                    <svg></svg>
+                </div>
+                <br>
+                <a href="" ng-click="updateDataLine('chart1')"> updateDataLine chart1 </a>
+            </div>
+            <div class="col-md-4 text-center">
                 <div id="chart2">
                     <svg></svg>
                 </div>
                 <br>
-                <a href="" ng-click="updateDataLine()"> updateDataLine </a>
+                <a href="" ng-click="updateDataLine('chart2')"> updateDataLine chart2 </a>
             </div>
         </div>
     </div>    
