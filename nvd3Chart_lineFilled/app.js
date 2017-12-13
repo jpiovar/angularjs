@@ -41,6 +41,7 @@ app.controller('MainCtrl', function($scope) {
 
     var chartTitle = svg.select('text.title');
  
+    svg.attr('transform', 'translate(-20,0)'); // move whole chart complex little left
 
     detectSizeApply();
 
