@@ -17,13 +17,14 @@ app.controller('MainCtrl', function($scope) {
     console.log(svgWidth);
 
 
-    // d3.select('#chart svg')
-    // .append("text")
-    // .attr("x", svgWidth/2)             
-    // .attr("y", 30)
-    // .attr("text-anchor", "middle")  
-    // .text($scope.title);
+    d3.select('#chart svg')
+    .append("text")
+    .attr("x", svgWidth/2 + 30)             
+    .attr("y", 30)
+    .attr("text-anchor", "middle")  
+    .text($scope.title);
 
+    // d3.select('.nv-legendWrap').attr('transform', 'translate(0, 475)')
     
     d3.selectAll('.nvd3.nv-legend g').style('fill', "white")
 
@@ -35,16 +36,20 @@ app.controller('MainCtrl', function($scope) {
                 .showYAxis(true)        //Show the y-axis
                 .showXAxis(true)        //Show the x-axis
                 .clipEdge(false)        // show full dot, not cutted in top
-                .duration(250)   
-                .legendPosition("top");
+                .duration(250);   
+                // .legendPosition("top");
 
         chart.margin({ top:100, bottom: 50 });  // space in relation to top and title
-                      
+                     
+
         chart.yAxis.tickPadding(10);  // yAxis labels position in relation to Y line 
         chart.xAxis.tickPadding(10); // xAxis labels position in relation to X line
 
         // chart.legend.padding({top: 10, bottom: 20, left: 100, right: 100});
-                                  
+                 
+        // chart.legend.rightAlign(true); 
+        chart.legend.margin({top: 30, right: 0, left: 0, bottom: 50});
+
         chart.xAxis     //Chart x-axis settings
         .axisLabel('Time (ms)')
         .tickFormat(d3.format(',r'));
