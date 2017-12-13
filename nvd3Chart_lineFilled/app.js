@@ -3,50 +3,68 @@ var app = angular.module('nvd3', []);
 app.controller('MainCtrl', function($scope) { 
 
     $(document).ready(function(){
-      $(window).resize(detectSizeApply);
+      // $(window).resize(function(){detectSizeApply('chart1')});
     });
 
+    function detectSizeApply(aChart){ 
+      chObj[aChart].chartWidth = parseInt(chObj[aChart].containerChart.style("width"));
+      chObj[aChart].chartHeight = parseInt(chObj[aChart].containerChart.style("height"));
 
-    function detectSizeApply(){ 
-      cChWidth = parseInt(containerChart.style("width"));
-      cChHeight = parseInt(containerChart.style("height"));
-
-      svg.attr('height', '100%').attr('width','100%')
-        .attr('viewBox','0 0 '+Math.max(cChWidth,cChHeight) +' '+Math.max(cChWidth,cChHeight));
+      chObj[aChart].svg
+        .attr('height', '100%')
+        .attr('width','100%')
+        .attr('viewBox','0 0 '+Math.max(chObj[aChart].chartWidth,chObj[aChart].chartHeight) +' '+Math.max(chObj[aChart].chartWidth,chObj[aChart].chartHeight));
   
-      // svg.select('text.title').remove();
-      svgWidth = parseInt(svg.style("width")); // 500px to 500
-      chartTitle.attr("x", svgWidth/2 + 30);
+      // svg1.select('text.title').remove();
+      chObj[aChart].svgWidth = parseInt(chObj[aChart].svg.style("width")); // 500px to 500
+      chObj[aChart].chartTitle.attr("x", chObj[aChart].svgWidth/2 + 30);
     }
 
     
     $scope.title = "Chart title";
     
-    var chartData;
-    var chart;
-    var body = d3.select("body");    
-    var svg = body.select("#chart svg");    
-    var svgWidth = parseInt(svg.style("width")); // 500px to 500
+    var body = d3.select("body");
+
+    var chObj = {
+      'chart1':{
+        'chartData':null,
+        'chart':null,
+        'svg':body.select("#chart1 svg"),
+        'svgWidth':parseInt(body.select("#chart1 svg").style("width")),
+        'containerChart':d3.select('#chart1'),
+        'chartWidth':null,
+        'chartHeight':null,
+        'chartTitle':null
+      },
+      'chart2':{
+        'chartData':null,
+        'chart':null,
+        'svg':body.select("#chart2 svg"),
+        'svgWidth':parseInt(body.select("#chart2 svg").style("width")),
+        'containerChart':d3.select('#chart2'),
+        'chartWidth':null,
+        'chartHeight':null,
+        'chartTitle':null
+      }                   
+    };
+
+
     
-    var containerChart = d3.select('#chart');
-    var cChWidth = parseInt(containerChart.style("width"));
-    var cChHeight = parseInt(containerChart.style("height"));
+    
+    function initialLineChart(aChart){
 
-    svg
-    .append("text").classed('title',true)
-    .attr("x", svgWidth/2 + 30)             
-    .attr("y", 30)
-    .attr("text-anchor", "middle")  
-    .text($scope.title);
+      chObj[aChart].svg
+      .append("text").classed('title',true)
+      .attr("x", chObj[aChart].svgWidth/2 + 30)             
+      .attr("y", 30)
+      .attr("text-anchor", "middle")  
+      .text(aChart+' title');
+      chObj[aChart].chartTitle = chObj[aChart].svg.select('text.title');  
+      chObj[aChart].svg.attr('transform', 'translate(-20,0)'); // move whole chart complex little left
+  
 
-    var chartTitle = svg.select('text.title');
- 
-    svg.attr('transform', 'translate(-20,0)'); // move whole chart complex little left
-
-    detectSizeApply();
-
-    nv.addGraph(function() {
-        chart = nv.models.lineChart()
+      nv.addGraph(function() {
+        chObj[aChart].chart = nv.models.lineChart()
                 .margin({left: 100})  //Adjust chart margins to give the x-axis some breathing room.
                 .useInteractiveGuideline(true)  //We want nice looking tooltips and a guideline!
                 .showLegend(true)       //Show the legend, allowing users to turn on/off line series.
@@ -56,36 +74,56 @@ app.controller('MainCtrl', function($scope) {
                 .duration(250);   
                 // .legendPosition("top");
 
-        chart.margin({ top:100, bottom: 50 });  // space in relation to top and title
+        chObj[aChart].chart.margin({ top:100, bottom: 50 });  // space in relation to top and title
                      
 
-        chart.yAxis.tickPadding(10);  // yAxis labels position in relation to Y line 
-        chart.xAxis.tickPadding(10); // xAxis labels position in relation to X line
+        chObj[aChart].chart.yAxis.tickPadding(10);  // yAxis labels position in relation to Y line 
+        chObj[aChart].chart.xAxis.tickPadding(10); // xAxis labels position in relation to X line
 
         // chart.legend.padding({top: 10, bottom: 20, left: 100, right: 100});
                  
         // chart.legend.rightAlign(true); 
-        chart.legend.margin({top: 30, right: 0, left: 0, bottom: 50});
+        chObj[aChart].chart.legend.margin({top: 30, right: 0, left: 0, bottom: 50});
 
-        chart.xAxis     //Chart x-axis settings
+        chObj[aChart].chart.xAxis     //Chart x-axis settings
         .axisLabel('Time (ms)')
         .tickFormat(d3.format(',r'));
       
-        chart.yAxis     //Chart y-axis settings
+        chObj[aChart].chart.yAxis     //Chart y-axis settings
         .axisLabel('Voltage (v)')
         .tickFormat(d3.format('.02f'));
       
         /* Done setting the chart up? Time to render it!*/
-        var myData = sinAndCos();   //You need data...
+        var myData1 = sinAndCos();   //You need data...
       
-        chartData = d3.select('#chart svg')    //Select the <svg> element you want to render the chart in.   
-        .datum(myData)         //Populate the <svg> element with chart data...
-        .call(chart);          //Finally, render the chart!
+        chObj[aChart].chartData = d3.select('#' + aChart + ' svg')    //Select the <svg> element you want to render the chart in.   
+        .datum(myData1)         //Populate the <svg> element with chart data...
+        .call(chObj[aChart].chart);          //Finally, render the chart!
       
         //Update the chart when window resizes.
-        nv.utils.windowResize(function() { chart.update() });
-        return chart;
-    });
+        nv.utils.windowResize(function() { 
+          detectSizeApply(aChart); 
+          chObj[aChart].chart.update(); 
+        });
+        return chObj[aChart].chart;
+      });
+
+    }
+
+
+
+    initialLineChart('chart1');
+
+    initialLineChart('chart2');
+
+    
+    detectSizeApply('chart1');
+        
+    detectSizeApply('chart2');
+
+
+
+    
       /**************************************
        * Simple test data generator
        */
@@ -163,13 +201,13 @@ app.controller('MainCtrl', function($scope) {
 
       $scope.title = "ok title";
 
-      chartTitle.text($scope.title);
+      chObj['chart1'].chartTitle.text($scope.title);
         
       var myData1 = sinAndCos1();   //You need data...
         
-      chartData.datum(myData1).call(chart);
+      chObj['chart1'].chartData.datum(myData1).call(chObj['chart1'].chart);
 
-      nv.utils.windowResize(chart.update);
+      nv.utils.windowResize(function(){ chObj['chart1'].chart.update(); });
 
     }
 
